@@ -3,8 +3,14 @@ class PopularMovies {
   List<Results>? results;
   int? totalPages;
   int? totalResults;
+  String? statusMessage;
 
-  PopularMovies({this.page, this.results, this.totalPages, this.totalResults});
+  PopularMovies(
+      {this.page,
+      this.results,
+      this.totalPages,
+      this.totalResults,
+      this.statusMessage});
 
   PopularMovies.fromJson(Map<String, dynamic> json) {
     page = json['page'];
@@ -16,16 +22,17 @@ class PopularMovies {
     }
     totalPages = json['total_pages'];
     totalResults = json['total_results'];
+    statusMessage = json['status_message'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['page'] = this.page;
-    if (this.results != null) {
-      data['results'] = this.results!.map((v) => v.toJson()).toList();
+    data['page'] = page;
+    if (results != null) {
+      data['results'] = results!.map((v) => v.toJson()).toList();
     }
-    data['total_pages'] = this.totalPages;
-    data['total_results'] = this.totalResults;
+    data['total_pages'] = totalPages;
+    data['total_results'] = totalResults;
     return data;
   }
 }
@@ -81,20 +88,20 @@ class Results {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['adult'] = this.adult;
-    data['backdrop_path'] = this.backdropPath;
-    data['genre_ids'] = this.genreIds;
-    data['id'] = this.id;
-    data['original_language'] = this.originalLanguage;
-    data['original_title'] = this.originalTitle;
-    data['overview'] = this.overview;
-    data['popularity'] = this.popularity;
-    data['poster_path'] = this.posterPath;
-    data['release_date'] = this.releaseDate;
-    data['title'] = this.title;
-    data['video'] = this.video;
-    data['vote_average'] = this.voteAverage;
-    data['vote_count'] = this.voteCount;
+    data['adult'] = adult;
+    data['backdrop_path'] = backdropPath;
+    data['genre_ids'] = genreIds;
+    data['id'] = id;
+    data['original_language'] = originalLanguage;
+    data['original_title'] = originalTitle;
+    data['overview'] = overview;
+    data['popularity'] = popularity;
+    data['poster_path'] = posterPath;
+    data['release_date'] = releaseDate;
+    data['title'] = title;
+    data['video'] = video;
+    data['vote_average'] = voteAverage;
+    data['vote_count'] = voteCount;
     return data;
   }
 }
