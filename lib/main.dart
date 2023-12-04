@@ -1,24 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/presntation/screens/home/home.dart';
-import 'package:movie_app/presntation/screens/splash/splash.dart';
+import 'package:movie_app/presntation/utils/app_router.dart';
 
 void main() {
-  runApp(const MovieApp());
+  runApp(MovieApp(appRouter: AppRouter()));
 }
 
 class MovieApp extends StatelessWidget {
-  const MovieApp({super.key});
+  final AppRouter appRouter;
+
+  const MovieApp({super.key, required this.appRouter});
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      routes: {
-        HomeScreen.routeName: (context) => HomeScreen(),
-        SplashScreen.routeName: (context) => const SplashScreen(),
-      },
-      initialRoute: SplashScreen.routeName,
+      onGenerateRoute: appRouter.generateRoute,
     );
   }
 }
